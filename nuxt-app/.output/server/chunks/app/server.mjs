@@ -28,12 +28,14 @@ import 'node:https';
 import 'destr';
 import 'unenv/runtime/fetch/index';
 import 'scule';
+import 'klona';
 import 'ohash';
 import 'unstorage';
 import 'radix3';
 import 'node:fs';
 import 'node:url';
 import 'pathe';
+import 'http-graceful-shutdown';
 
 const appConfig = useRuntimeConfig$1().app;
 const baseURL = () => appConfig.baseURL;
@@ -101,9 +103,6 @@ function createNuxtApp(options) {
       app: options.ssrContext.runtimeConfig.app
     };
   }
-  nuxtApp.hook("app:error", (...args) => {
-    console.error("[nuxt] error caught during app initialization", ...args);
-  });
   const runtimeConfig = options.ssrContext.runtimeConfig;
   const compatibilityConfig = new Proxy(runtimeConfig, {
     get(target, prop) {
@@ -255,7 +254,7 @@ function createHead(initHeadObject, options) {
 }
 version.startsWith("2.");
 const appPageTransition = { "name": "page", "mode": "out-in" };
-const appHead = { "meta": [{ "charset": "utf-8" }, { "name": "theme-color", "content": "#000000" }, { "name": "distribution", "content": "Taiwan Taipei" }, { "name": "copyright", "content": "ES Design 壹慎設計有限公司" }, { "name": "viewport", "content": "width=device-width, initial-scale=1" }, { "name": "description", "content": "我們專注在【視覺設計、品牌識別、網頁設計、特效開發】全方位客製化設計解決方案，強調視覺與互動的細節體驗，讓內容可以超越形式的存在，嘗試打造突能破框架的品牌價值" }, { "property": "og:type", "content": "website" }, { "hid": "og:image", "property": "og:image", "content": "https://e-s.tw/wp-content/uploads/2022/10/socialshare.jpg" }, { "hid": "og:url", "property": "og:url", "content": "" }, { "hid": "og:site_name", "property": "og:site_name", "content": "H&彩虹莊園會館" }, { "property": "og:image:width", "content": "1200" }, { "property": "og:image:height", "content": "630" }, { "name": "twitter:card", "content": "summary_large_image" }], "link": [{ "rel": "icon", "type": "image/x-icon", "href": "/favicon.ico" }, { "href": "https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap", "rel": "stylesheet" }], "style": [], "script": [{ "src": "https://static.line-scdn.net/liff/edge/2/sdk.js" }], "noscript": [{ "children": "😚H&彩虹莊園會館：此網站必須啟用 ✪ Javascript ✪" }], "htmlAttrs": { "lang": "zh-TW" }, "charset": "utf-8", "title": "H&彩虹莊園會館", "titleTemplate": "%s ✷ H&彩虹莊園會館" };
+const appHead = { "meta": [{ "charset": "utf-8" }, { "name": "theme-color", "content": "#000000" }, { "name": "distribution", "content": "Taiwan Taipei" }, { "name": "copyright", "content": "ES Design 壹慎設計有限公司" }, { "name": "viewport", "content": "width=device-width, initial-scale=1" }, { "name": "description", "content": "我們專注在【視覺設計、品牌識別、網頁設計、特效開發】全方位客製化設計解決方案，強調視覺與互動的細節體驗，讓內容可以超越形式的存在，嘗試打造突能破框架的品牌價值" }, { "property": "og:type", "content": "website" }, { "hid": "og:image", "property": "og:image", "content": "https://e-s.tw/wp-content/uploads/2022/10/socialshare.jpg" }, { "hid": "og:url", "property": "og:url", "content": "" }, { "hid": "og:site_name", "property": "og:site_name", "content": "H&彩虹莊園會館" }, { "property": "og:image:width", "content": "1200" }, { "property": "og:image:height", "content": "630" }, { "name": "twitter:card", "content": "summary_large_image" }], "link": [{ "rel": "icon", "type": "image/x-icon", "href": "/favicon.ico" }, { "href": "https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap", "rel": "stylesheet" }], "style": [], "script": [{ "src": "https://static.line-scdn.net/liff/edge/2/sdk.js" }], "noscript": [{ "innerHTML": "😚H&彩虹莊園會館：此網站必須啟用 ✪ Javascript ✪" }], "htmlAttrs": { "lang": "zh-TW" }, "charset": "utf-8", "title": "H&彩虹莊園會館", "titleTemplate": "%s ✷ H&彩虹莊園會館" };
 const appLayoutTransition = false;
 const appKeepalive = false;
 const vueuse_head_plugin_D7WGfuP1A0 = defineNuxtPlugin((nuxtApp) => {
@@ -410,7 +409,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/404-d730ef72.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/404-f42dd342.mjs').then((m) => m.default || m)
   },
   {
     name: "slug",
@@ -419,7 +418,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/_slug_-45857fb9.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_slug_-51ba2a80.mjs').then((m) => m.default || m)
   },
   {
     name: "index",
@@ -428,7 +427,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/index-c0104e5b.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index-5d6dba7e.mjs').then((m) => m.default || m)
   },
   {
     name: "privacy",
@@ -437,7 +436,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/privacy-3be17c0f.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/privacy-d89c6799.mjs').then((m) => m.default || m)
   },
   {
     name: "room-slug",
@@ -446,7 +445,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/_slug_-18c933a0.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/_slug_-660e60a2.mjs').then((m) => m.default || m)
   },
   {
     name: "room",
@@ -455,7 +454,7 @@ const _routes = [
     meta: {},
     alias: [],
     redirect: void 0,
-    component: () => import('./_nuxt/index-08691e57.mjs').then((m) => m.default || m)
+    component: () => import('./_nuxt/index-ce9ba30b.mjs').then((m) => m.default || m)
   }
 ];
 const routerOptions0 = {
@@ -5298,7 +5297,7 @@ const _wrapIf = (component, props2, slots) => {
   return { default: () => props2 ? h(component, props2 === true ? {} : props2, slots) : h(Fragment, {}, slots) };
 };
 const layouts = {
-  default: () => import('./_nuxt/default-39792e70.mjs').then((m) => m.default || m)
+  default: () => import('./_nuxt/default-6e5e5645.mjs').then((m) => m.default || m)
 };
 const LayoutLoader = /* @__PURE__ */ defineComponent({
   name: "LayoutLoader",
@@ -5500,7 +5499,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/error-component-d15214e5.mjs').then((r) => r.default || r));
+    const ErrorComponent = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/error-component-13b76115.mjs').then((r) => r.default || r));
     const IslandRenderer = /* @__PURE__ */ defineAsyncComponent(() => import('./_nuxt/island-renderer-2a1bf72a.mjs').then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();

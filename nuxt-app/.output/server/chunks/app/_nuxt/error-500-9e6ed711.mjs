@@ -31,12 +31,14 @@ import 'node:https';
 import 'destr';
 import 'unenv/runtime/fetch/index';
 import 'scule';
+import 'klona';
 import 'ohash';
 import 'unstorage';
 import 'radix3';
 import 'node:fs';
 import 'node:url';
 import 'pathe';
+import 'http-graceful-shutdown';
 
 const _sfc_main = {
   __name: "error-500",

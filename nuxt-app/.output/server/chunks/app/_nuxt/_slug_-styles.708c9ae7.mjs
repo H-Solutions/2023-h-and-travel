@@ -11,14 +11,16 @@ import 'ofetch';
 import 'unenv/runtime/fetch/index';
 import 'hookable';
 import 'scule';
+import 'klona';
+import 'defu';
 import 'ohash';
 import 'ufo';
 import 'unstorage';
-import 'defu';
 import 'radix3';
 import 'node:fs';
 import 'node:url';
 import 'pathe';
+import 'http-graceful-shutdown';
 
 const _slug__vue_vue_type_style_index_0_lang = "@font-face{font-family:Gambetta-Regular;src:url(" + buildAssetsURL("Gambetta-Regular.ad720b72.otf") + ")}.page-slug__kv{height:auto;width:100%}.page-slug__flex{display:flex;flex-direction:column}";
 

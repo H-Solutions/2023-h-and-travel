@@ -1,6 +1,11 @@
 <template>
     <div class="navigation-main">
         <ul>
+            <li>
+                <a href="https://h-and.world/" rel="noopener noreferrer" target="_blank" title="關於H&" >
+                    <img src="https://rainbow.h-and.world/wp-content/uploads/2023/08/BH__LOGO.png" style="height: 2rem;width: auto;">
+                </a>
+            </li>
             <li
                 v-for="(item, index) in data"
                 :key="index"

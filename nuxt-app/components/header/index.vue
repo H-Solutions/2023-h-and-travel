@@ -206,6 +206,9 @@ $class-name: header-index;
 
         @include media-breakpoint-down(medium) {
             padding: 1.2rem 0;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
 
         > span {
@@ -220,6 +223,10 @@ $class-name: header-index;
                 display: flex;
                 flex-direction: column;
                 cursor: pointer;
+                
+                position: absolute;
+                top: 50%;
+                right: 0;
 
                 > span {
                     @include size(1.6rem, .2rem);
